@@ -28,24 +28,24 @@ COMMAND = """
 import display
 import device
 import time
-from brilliant_monocle_driver import Monocle
 
 def show_battery(count):
-  batLvl = str(device.battery_level())
-  display.fill(0x000066)
-  display.text("bat: {} {}".format(batLvl, count), 5, 5, 0xffffff)
-  display.show()
+    batLvl = str(device.battery_level())
+    fill = display.Fill(display.BLUE)
+    text = display.Text("bat: {} {}".format(batLvl, count), 5, 5, display.WHITE)
+    display.show(fill, text)
 
 count = 0
-while (count < 5):
-  show_battery(count)
-  time.sleep(1)
-  count += 1
+while count < 5:
+    show_battery(count)
+    time.sleep(1)
+    count += 1
 
-display.fill(0x000000)
-display.show()
+fill = display.Fill(display.CLEAR)
+display.show(fill)
 
 print("Done")
+
 
 """
 
